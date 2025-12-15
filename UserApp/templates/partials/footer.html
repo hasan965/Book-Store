@@ -1,0 +1,71 @@
+{% load static %}
+
+<section class="footers bg-light pt-5 pb-3">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 footers-one">
+                <div class="footers-logo">
+                    <img src="{% static 'Navbar logo.png' %}" alt="Loading.." style="width:200px;">
+                </div>
+                <div class="footers-info mt-3">
+                    <p>nehna hun l hata n2amenlkon kel l books l arabiya</p>
+                </div>
+                <div class="social-icons social-LR-margin">
+                    <a href="https://www.facebook.com/"><i class="fa fa-facebook-square fa-2x social"></i></a>
+                    <a href="https://twitter.com/"><i class="fa fa-twitter-square fa-2x social"></i></a>
+                    <a href="https://www.youtube.com/"><i class="fa fa-youtube fa-2x social"></i></a>
+                    <a href=""><i class="fa fa-envelope-square fa-2x social"></i></a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-2 footers-two text-center">
+                <h5>{{ t.affiliate|default:'Affiliate' }}</h5>
+                <ul class="list-unstyled">
+                    <li><a class="text-muted text-decoration-none" href="/aboutTheProg">{{ t.about_program|default:'About Programme' }}</a></li>
+                    <li><a class="text-muted text-decoration-none" href="/t&c">{{ t.terms_and_conditions|default:'Terms & Conditions' }}</a></li>
+                    <li><a class="text-muted text-decoration-none" href="/contactUs">{{ t.contact_us|default:'Contact Us' }}</a></li>
+                    <li><a class="text-muted text-decoration-none" href="/payments">{{ t.payments|default:'Payments' }}</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-2 footers-three text-center">
+                <h5>{{ t.get_help|default:'Get Help' }}</h5>
+                <ul class="list-unstyled">
+                    <li><a class="text-muted text-decoration-none" href="/faq">{{ t.faq|default:'FAQ' }}</a></li>
+                    <li><a class="text-muted text-decoration-none" href="/returns">{{ t.returns|default:'Returns' }}</a></li>
+                    <li><a class="text-muted text-decoration-none" href="/shipping">{{ t.shipping|default:'Shipping' }}</a></li>
+                    <li><a class="text-muted text-decoration-none" href="/payments">{{ t.payment_options|default:'Payment Options' }}</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-2 footers-four text-center">
+                <h5>{{ t.company|default:'Company' }}</h5>
+                <ul class="list-unstyled">
+                    <li><a class="text-muted text-decoration-none" href="/careers">{{ t.career|default:'Career' }}</a></li>
+                    <li><a class="text-muted text-decoration-none" href="/aboutus">{{ t.about_us|default:'About Us' }}</a></li>
+                    <li><a class="text-muted text-decoration-none" href="#">{{ t.seller|default:'Our Services' }}</a></li>
+                    <li><a class="text-muted text-decoration-none" href="/privacypolicy">{{ t.privacy_policy|default:'Privacy Policy' }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="disclaimer bg-light border">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-12 py-2">
+                <small>
+                   
+                </small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="copyright border">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12 pt-3">
+                <p class="text-muted">Copyright © 2023 MyFavouriteBooks Pvt. Ltd. | Designed by: Raghav Desai</p>
+            </div>
+        </div>
+    </div>
+</section>

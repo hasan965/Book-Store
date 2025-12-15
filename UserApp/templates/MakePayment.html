@@ -1,0 +1,118 @@
+{% extends "index.html" %}
+
+{% block content %}
+<style>
+    .payment-card {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        margin-top: 40px;
+        transition: 0.3s;
+    }
+
+    .payment-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .payment-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-bottom: 25px;
+        color: #2c3e50;
+        text-align: center;
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        content: ">";
+    }
+
+    .btn-pay {
+        width: 100%;
+        padding: 12px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        background: linear-gradient(135deg, #27ae60, #2ecc71);
+        border: none;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-pay:hover {
+        background: linear-gradient(135deg, #2ecc71, #27ae60);
+        transform: scale(1.02);
+    }
+
+    .form-control {
+        border-radius: 8px;
+        box-shadow: none !important;
+    }
+
+    .table td {
+        vertical-align: middle;
+    }
+</style>
+
+<div class="container">
+    <nav>
+        <ol class="breadcrumb bg-transparent px-0">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/ShowAllCartItems">Back to Cart</a></li>
+            <li class="breadcrumb-item active">Payment</li>
+        </ol>
+    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="payment-card">
+                <h2 class="payment-title">💳 Secure Payment</h2>
+                <form method="post">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label class="form-label">Total Amount</label>
+                        <input type="text" class="form-control" value="€ {{ request.session.total }}" readonly>
+                    </div>
+
+                    <h5 class="mt-3">Shipping / Delivery details</h5>
+                    <div class="mb-2">
+                        <label class="form-label">Recipient name</label>
+                        <input name="recipient_name" class="form-control" value="{{ shipping.recipient_name|default:'' }}">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Address line 1</label>
+                        <input name="address_line1" class="form-control" value="{{ shipping.address_line1|default:'' }}">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Address line 2</label>
+                        <input name="address_line2" class="form-control" value="{{ shipping.address_line2|default:'' }}">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <label class="form-label">City</label>
+                            <input name="city" class="form-control" value="{{ shipping.city|default:'' }}">
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <label class="form-label">Postal code</label>
+                            <input name="postal_code" class="form-control" value="{{ shipping.postal_code|default:'' }}">
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Country</label>
+                        <input name="country" class="form-control" value="{{ shipping.country|default:'' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone</label>
+                        <input name="phone" class="form-control" value="{{ shipping.phone|default:'' }}">
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-pay">
+                        <i class="bi bi-lock-fill"></i> Proceed to Stripe Checkout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

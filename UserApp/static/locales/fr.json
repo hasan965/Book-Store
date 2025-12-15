@@ -1,0 +1,22 @@
+{
+  "home": "Accueil",
+  "categories": "Catégories",
+  "about_us": "À propos",
+  "search_placeholder": "Rechercher des livres",
+  "lang": "Lang",
+  "seller": "Vendeur",
+  "add_to_cart": "Ajouter au panier",
+  "buy_now": "Acheter maintenant",
+  "view_details": "Voir les détails",
+  "featured_sellers": "Vendeurs en vedette",
+  "hot_deals": "Offres chaudes",
+  "about_book": "À propos de ce livre",
+  "no_description": "Aucune description disponible.",
+  "quantity": "Quantité",
+  "suggested_books": "Livres suggérés",
+  "all_books": "Tous les livres",
+  "popular": "Populaire: Classiques arabes • Science • Programmation • Affaires • Enfants",
+  "no_search_results": "Aucun résultat de recherche",
+  "search_suggestion": "Votre requête de recherche n'a trouvé aucun livre.",
+  "top": "Top"
+}

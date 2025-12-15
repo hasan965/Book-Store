@@ -1,0 +1,112 @@
+{%extends "index.html"%}
+
+{%block content%}
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+        text-shadow: rgba(0, 0, 0, .01) 0 0 1px
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        content: ">"
+    }
+
+    .breadcrumb {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        padding: .1rem 0rem !important;
+        margin-bottom: 0rem;
+        list-style: none;
+        background-color: #ffffff;
+        border-radius: .25rem
+    }
+
+    .product_name {
+        font-size: 20px;
+        font-weight: 400;
+        margin-top: 0px
+    }
+
+    .product_description {
+        padding-left: 0px
+    }
+
+    .image_selected {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: calc(100% + 15px);
+        height: 525px;
+        -webkit-transform: translateX(-15px);
+        -moz-transform: translateX(-15px);
+        -ms-transform: translateX(-15px);
+        -o-transform: translateX(-15px);
+        transform: translateX(-15px);
+        border: solid 1px #e8e8e8;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        padding: 15px
+    }
+
+    .padding-2 {
+        margin-right: 5px;
+        margin-left: 5px
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    li {
+        font-size: 16px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1 order-lg-2 order-1"></div>
+            <div class="col-lg-10 order-2">
+                <div class="product_description">
+                    <br>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active">payments</li>
+                        </ol>
+                    </nav><br>
+                    <div class="product_name">
+                        <h4><i><b>{{ t.payments|default:'Payments' }}</b></i></h4>
+                        <p class="mt-3">{{ t.stripe_info|default:'We use Stripe Checkout for secure payments. Your payment is processed directly by Stripe and we never store your card details.' }}</p>
+                        <div class="my-3 p-3 border rounded bg-light">
+                            <strong>{{ t.secure_checkout|default:'Secure Checkout' }}</strong>
+                            <p class="small text-muted">{{ t.secure_checkout|default:'Secure Checkout' }} — {{ t.card_logos_alt|default:'Accepted cards' }}</p>
+                            <img src="https://stripe.com/img/v3/home/social.png" alt="{{ t.card_logos_alt|default:'Cards' }}" style="max-width:220px;" />
+                        </div>
+                        <p>How it works:</p>
+                        <ol>
+                            <li>Select <strong>{{ t.proceed_to_payment|default:'Proceed to payment' }}</strong> — you'll be redirected to Stripe Checkout.</li>
+                            <li>Enter your card details on Stripe's secure page (we never see or store card numbers).</li>
+                            <li>After a successful payment you'll be returned to our site and your order will be created.</li>
+                        </ol>
+                        <div class="mt-3">
+                            <a href="/MakePayment" class="btn btn-primary">{{ t.proceed_to_payment|default:'Proceed to payment' }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1 order-lg-2 order-3"></div>
+        </div>
+    </div>
+</body>
+{%endblock%}

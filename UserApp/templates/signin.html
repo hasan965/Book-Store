@@ -1,0 +1,118 @@
+{%extends "index.html"%}
+
+
+{%block content%}
+<style>
+    .quote-msg {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .mt-60 {
+        margin-top: 60px;
+    }
+
+    .lm-9 {
+        margin-left: 9px;
+    }
+
+    .mt-100 {
+        margin-top: 100px;
+    }
+
+    .side-round{
+        border-radius: 20px;
+    }
+</style>
+<script>
+    var a = 0;
+    function mouseOver(){
+        const uname = document.forms['suForm']['uname'].value;
+        const pass = document.forms['suForm']['password'].value;
+
+        if((uname == "" || pass == "") && a==0){
+            buttonMoveLeft();
+            a = 1;
+            return false;
+        } 
+
+        if((uname == "" || pass == "") && a==1){
+            buttonMoveRight();
+            a = 2;
+            return false;
+        } 
+
+        if((uname == "" || pass == "") && a==2){
+            buttonMoveLeft();
+            a = 1;
+            return false;
+        } 
+
+        else{
+            // document.getElementById('submit-btn').click();  
+            document.getElementById('submit-btn').style.cursor = 'pointer';
+            return false;
+        };
+    };
+    function buttonMoveLeft(){
+
+        const button = document.getElementById('submit-btn');
+        button.style.transform = 'translateX(+70%)';
+
+    };
+    function buttonMoveRight(){
+
+        const button = document.getElementById('submit-btn');
+        button.style.transform = 'translateX(-70%)';
+
+    };
+</script>
+
+<body class="bg-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 text-black mt-60">
+                <h1 class="text-black display-4 mt-60" style="font-size:60px;">
+                    <b>To attain knowledge, add things everyday...</b>
+                </h1>
+            </div>
+            <div class="col-md-5 quote-msg">
+                <div class="card mt-100">
+                    <div class="card-body">
+                        <form method="post" name="suForm">
+                            {%csrf_token%}
+                            <label>UserName</label><br>
+                            <input type="text" name="uname" class="form-control" required><br>
+                            <label>Password</label><br>
+                            <div class="input-group mb-2">
+                                <input id="signin-password" type="password" name="password" class="form-control" required>
+                                <button class="btn btn-outline-secondary" type="button" id="toggle-signin-pass" onclick="toggleSigninPassword()" aria-label="Toggle password visibility">
+                                    <i class="bi bi-eye" id="signin-pass-icon"></i>
+                                </button>
+                            </div>
+                            <input type="submit" class="btn btn-primary btn-block btn-sl" id="submit-btn" value="Sign in" onmouseover="mouseOver()">
+                        </form>
+                        <p class="mt-2">Not a member? <a href="/signup" style="text-decoration: none;">Create
+                            Account</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+</body>
+{%endblock%}
+
+<script>
+    function toggleSigninPassword() {
+        const input = document.getElementById('signin-password');
+        const icon = document.getElementById('signin-pass-icon');
+        if (!input) return;
+        if (input.type === 'password') {
+            input.type = 'text';
+            if (icon) { icon.classList.remove('bi-eye'); icon.classList.add('bi-eye-slash'); }
+        } else {
+            input.type = 'password';
+            if (icon) { icon.classList.remove('bi-eye-slash'); icon.classList.add('bi-eye'); }
+        }
+    }
+</script>

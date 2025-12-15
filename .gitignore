@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Django
+*.log
+*.pot
+*.pyc
+local_settings.py
+# ignore local DB and media
+db.sqlite3
+media/
+staticfiles/
+*.sqlite3
+
+# Environment / secrets
+.env
+.env.*
+# Local DB / media / static outputs
+db.sqlite3
+*.sqlite3
+media/
+staticfiles/
+# Virtualenvs
+venv/
+env/
+.venv/
+
+# IDEs / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

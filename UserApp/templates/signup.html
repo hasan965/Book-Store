@@ -1,0 +1,118 @@
+{%extends "index.html"%}
+
+{%block content%}
+<style>
+    .quote-msg {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .mt-60 {
+        margin-top: 60px;
+    }
+
+    .mt-130 {
+        margin-top: 130px;
+    }
+</style>
+
+<script>
+    var a = 0;
+    function mouseOver() {
+        const uname = document.forms['suForm']['uname'].value;
+        const email = document.forms['suForm']['email'].value;
+        const pass = document.forms['suForm']['password'].value;
+
+        if ((uname == "" || email == "" || pass == "") && a == 0) {
+            buttonMoveLeft();
+            a = 1;
+            return false;
+        }
+
+        if ((uname == "" || email == "" || pass == "") && a == 1) {
+            buttonMoveRight();
+            a = 2;
+            return false;
+        }
+
+        if ((uname == "" || email == "" || pass == "") && a == 2) {
+            buttonMoveLeft();
+            a = 1;
+            return false;
+        }
+
+        else {
+
+            // document.getElementById('submit-btn').click();  
+            document.getElementById('submit-btn').style.cursor = 'pointer';
+            return false;
+        };
+    };
+    function buttonMoveLeft() {
+
+        const button = document.getElementById('submit-btn');
+        button.style.transform = 'translateX(+70%)';
+
+    };
+    function buttonMoveRight() {
+
+        const button = document.getElementById('submit-btn');
+        button.style.transform = 'translateX(-70%)';
+
+    };
+</script>
+
+<script>
+    function toggleSignupPassword() {
+        const input = document.getElementById('signup-password');
+        const icon = document.getElementById('signup-pass-icon');
+        if (!input) return;
+        if (input.type === 'password') {
+            input.type = 'text';
+            if (icon) { icon.classList.remove('bi-eye'); icon.classList.add('bi-eye-slash'); }
+        } else {
+            input.type = 'password';
+            if (icon) { icon.classList.remove('bi-eye-slash'); icon.classList.add('bi-eye'); }
+        }
+    }
+</script>
+</script>
+
+<body class="bg-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 text-black mt-60">
+                <h1 class="text-black display-4 mt-60" style="font-size:60px;">
+                    <b>Knowledge is of no value unless you put it into practice.</b>
+                </h1>
+            </div>
+            <div class="col-md-5 quote-msg">
+                <div class="card mt-130">
+                    <div class="card-body">
+                        <form method="post" name="suForm">
+                            {%csrf_token%}
+                            <label>UserName</label><br>
+                            <input type="text" name="uname" class="form-control" required><br>
+                            <label>Email</label><br>
+                            <input type="email" name="email" class="form-control" required><br>
+                            <label>Password</label><br>
+                            <div class="input-group mb-2">
+                                <input id="signup-password" type="password" name="password" class="form-control" required>
+                                <button class="btn btn-outline-secondary" type="button" id="toggle-signup-pass" onclick="toggleSignupPassword()" aria-label="Toggle password visibility">
+                                    <i class="bi bi-eye" id="signup-pass-icon"></i>
+                                </button>
+                            </div>
+                            <br>
+                            <input type="submit" class="btn btn-primary btn-block btn-sl" value="Sign Up"
+                                id="submit-btn" onmouseover="mouseOver()">
+                        </form>
+                        <p class="mt-2">Already a member? <a href="/signin" style="text-decoration: none;">Sign In</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+</body>
+{%endblock%}

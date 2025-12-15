@@ -1,0 +1,87 @@
+{% load static %}
+
+<style>
+  .hero-carousel {
+    background: linear-gradient(180deg, rgba(15,131,214,0.06), rgba(255,255,255,0));
+    padding: 28px 0 18px 0;
+  }
+
+  .hero-inner {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* centered search overlay */
+  .hero-search {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    max-width: 900px;
+    z-index: 20;
+  }
+
+  .hero-search .input-group .form-control {
+    height: 56px;
+    border-radius: 8px 0 0 8px;
+    box-shadow: 0 6px 18px rgba(12, 90, 160, 0.12);
+  }
+
+  .hero-search .input-group .btn-search {
+    height: 56px;
+    border-radius: 0 8px 8px 0;
+    background-color: #ff8a00;
+    color: #fff;
+    border: none;
+  }
+
+  /* small overlay hint row */
+  .hero-hints {
+    position: absolute;
+    left: 50%;
+    top: 75%;
+    transform: translateX(-50%);
+    z-index: 15;
+    color: #fff;
+    font-weight: 500;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  }
+
+  @media (max-width: 767px) {
+    .hero-img { height: 220px; }
+    .hero-search { width: 92%; top: 56%; }
+  }
+</style>
+
+<div class="hero-carousel container-fluid">
+  <div class="container">
+    <div class="hero-inner">
+      <img src="{% static 'Back1.webp' %}" alt="hero" class="hero-img">
+
+      <form action="/search" method="get" class="hero-search">
+        <div class="input-group">
+          <input name="query" class="form-control" type="search" placeholder="{{ t.search_placeholder|default:'Search books' }}" aria-label="Search">
+          <button class="btn btn-search" type="submit" aria-label="Search">
+            <span class="d-none d-md-inline">{{ t.search_placeholder|default:'Search' }}</span>
+            <i class="bi bi-search d-inline d-md-none"></i>
+          </button>
+        </div>
+      </form>
+
+      <div class="hero-hints text-center mt-2 d-none d-md-block">
+        {{ t.popular }}
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,270 @@
+{%extends "index.html"%}
+
+{%block content%}
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+        text-shadow: rgba(0, 0, 0, .01) 0 0 1px
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        content: ">"
+    }
+
+    .breadcrumb {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        padding: .1rem 0rem !important;
+        margin-bottom: 0rem;
+        list-style: none;
+        /* background-color: #ffffff; */
+        border-radius: .25rem
+    }
+
+    .product_name {
+        font-size: 20px;
+        font-weight: 400;
+        margin-top: 0px
+    }
+
+    .product_description {
+        padding-left: 0px
+    }
+
+    p,
+    li {
+        font-size: 16px;
+    }
+</style>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1 order-lg-2 order-1"></div>
+            <div class="col-lg-10 order-2">
+                <div class="product_description">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active">FAQs</li>
+                        </ol>
+                    </nav><br>
+                    <h4><i><b>Frequently Asked Questions</b></i></h4><br>
+                    <p><i><h5>My Account:</h5></i></p>
+                    <h5>What does “my account” means? How can I modify my selective information?</h5>
+                    <p>
+                        Modifying your MyBooks account is quiet simple. You can see your orders at whatever time via “my
+                        account”.
+                        My account let you totally check on you transactions on MyBooks
+                    </p>
+                    <li>Handle/modify your personalized information such as address, contact information, e-mail ids.</li>
+                    <li>Modify your password.</li>
+                    <li>Tag your order status at any time</li>
+                    <hr class="singleline">
+                    <p><i><h5>How can I confirm if my order has been affirmed?</h5></i></p>
+                    <p>
+                        As soon as your order has been entered into logs and payment has been authorized, the vendors will affirm the order receipt and they will begin working on it.
+                    </p>
+                    <p>
+                        You will get an email confirming your order details as soon as vendor gets the information and he also affirms about the same. In that following email you will given a singular OrderID (for example: BW123456), the list of the item(s) ordered and by what the time period you can expect your order to be delivered
+                    </p>
+                    <p>
+                        You will be beforehand informed about the shipment of your order. Shipment details will be given with your unique OrderID and tracking digits
+                    </p>
+                    <hr class="singleline">
+                    <p><i>
+                            <h5>How can I purchase an item which is currently ‘out of stock’?</h5>
+                        </i></p>
+                    <p>
+                        Regrettably, the items that are currently out of stock will not be available for sell. Kindly utilize “notify me” button/feature, which will help you to be notified as soon as the item is available with vendors on MyBooks.
+                    </p>
+                    <hr class="singleline">
+                    <p><i>
+                            <h5>Why do I can understand the different price rates offered on the same item?</h5>
+                        </i></p>
+                    <p>
+                        On MyBooks, you might find different editions and varieties of the item. As in case of books, you might see some editions as collectors ere prints, while others may be just the hardcover and other paperbacks. You can get further details about this on the item page.
+                    </p>
+                    <p>
+                        Some editions are again published/re-printed in India, while some of them are brought by importing. All the other provided editions and different price tags for the same product are given on their respective pages under the feature of “the other editions”.
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>I can check unlike costs for the same item. Why?</h5></i></p>
+                    <p>
+                        An item might be available at contrasting costs. This difference could be because of the different vendors providing the same item at their suitable prices. At MyBooks, different vendors can offer their suiting prices and can fulfill their order differently.
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>What should I know prior asking for a gift wrapped order?</h5></i></p>
+                    <p>
+                        <li>The charge for gift wrapping is separately charged as per €30 per order.</li>
+                        <li>You can only get your gift wrapped when it is sold by Mybooks.</li>
+                        <li>Gift wrapping can only be done for the products available on Mybooks’s cart.</li>
+                        <li>Gift wrapping is not available on Cash-on-delivery items.</li>
+                        <li>Larger size items can’t be gift wrapped.</li>
+                        <li>Invoice bill will not contain information if the order only carries books. For other items that are requested to be gift wrapped, MyBooks will attach a detailed invoice bill containing logical, legit and tax/duty understandings.</li>
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>Defrayments:</h5></i></p>
+                    <p><i><h5>How can I make payments for the purchase made on Mybooks?</h5></i></p>
+                    <p>
+                        MyBooks caters the customers with many payment modes. The customer can make their payment via online being assured that the mybooks’s trusted payment gateway partners use a secure encryption technology to protect the transactions details against any type of theft and infringement and keep the details confidential every time.
+                    </p>
+                    <p>
+                        The customers can opt for any option while purchasing, such as, internet banking, E-gift voucher, and cash-on-delivery, credit/debit card (Visa, Master Card, Maestro and American Express). MyBooks accepts payment via cards in India and other 21 country lands.
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>When I buy from mybooks, do I need to be worried about any hidden charges like duty or sales taxes?</h5></i></p>
+                    <p>
+                        No, the customers have not to worry about any hidden charges while purchasing from MyBooks. The prices displayed on the website for all the items are final and fully inclusive. You pay the exact amount you see on the website.
+                    </p>
+                    <p>
+                        However, separate delivery charges are employed depending on the seller policy. Kindly check separate seller charges for the same. MyBooks as seller only charges €50 as delivery charges on order below €500.
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>What do we understand by Cash on Delivery?</h5></i></p>
+                    <p>
+                        If the customer is not satisfied by making a payment online on mybooks, they can always opt for option Cash on Delivery (COD) Mode. Using COD, they can pay the sum amount at the time of receiving the order at their doorway waiving off any form of online payment.
+                    </p>
+                    <p>
+                        The maximum limit for ordering COD is €50,000. The customers are requested to pay via cash only in COD. E-Gift vouchers or any stored credit will not be accepted for COD delivery. You can not use foreign currency to make COD payment. Only valid Euro currency will be accepted.
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>How can I make payment using my credit or debit card?</h5></i></p>
+                    <p>
+                        MyBooks consent for payments made via credit or debit card only in India and other 21 countries.
+                    </p>
+                    <p>
+                        Credit cards
+                    </p>
+                    <p>
+                        MyBooks accept money transactions by Visa, Master Card, Maestro and American Express credit cards only.
+                    </p>
+                    <p>
+                        To pay through your credit card, you need to enter your card details, expiry date, three digit CVV number displayed at the back of the card. As you enter the card details, you will be channelized to bank’s page for submitting your secure online transaction password.
+                    </p>
+                    <p>
+                        Debit Cards
+                    </p>
+                    <p>
+                        MyBooks accept money transactions by Visa, Master Card, Maestro and American Express debit cards only.
+                    </p>
+                    <p>
+                        To pay through your debit card, you need to enter your card details, expiry date (optional for Maestro card users), and three digits CVV number displayed at the back of the card. As you enter the card details, you will be channelized to bank’s page for submitting your secure online transaction password in order to conclude the payment.
+                    </p>
+                    <p>
+                        Customers can’t use internationally issued debit/credit cards for wallet or e-gift vouchers.
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>Will it be safe to use my credit/debit card details on mybooks website?</h5></i></p>
+                    <p>
+                        All the online transactions made on Mybooks website are inviolable with great degree of security over transaction provided on the internet. MyBooks have 256-bit encryption technology employed to secure the transactions and the customers’ selective information while channeling their money from their respective banks to completion of payment process. All the payments made via credit and debit cards are also securely checked by the starring banks. Banks these days utilize the 3D Secure password option to protect the online transactions and even employing extra security via identification of your credentials.
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>E-Gift Voucher:</h5></i></p>
+                    <p><i><h5>How can an e-Gift Voucher be bought or gifted?</h5></i></p>
+                    <p>
+                        <li>The customer should need to enter the name and email address of the individual they want to give the e-Gift Voucher to.</li>
+                        <li>The customer needs to enter the amount of the voucher they want to purchase and then click on ‘Proceed to Pay’</li>
+                        <li>The sidebar will the display the customer the payment options, i.e., by Credit Card / Debit Card / ATM Card / internet banking. They can pay according to their preferences, or bring in any changes in the amount by clicking "Edit" to edit it.</li>
+                        <li>As soon as, customers have fulfilled the checkout process, they will receive an email with the details of e-GV.</li>
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>How can the customer use an e-Gift Voucher for purchasing?</h5></i></p>
+                    <p>
+                        <li>Go to the website “mybooks.com” and choose all the product(s) they will to buy.</li>
+                        <li>As soon as they are click on checkout, then click on "Proceed To Pay".</li>
+                        <li>They should select the "Pay By e-Gift Voucher" Option.</li>
+                        <li>They need to enter the 16-digit Voucher Number and along with it the corresponding 6-digit PIN number.</li>
+                        <li>If the value of the e-Gift Voucher doesn't compensate the order sum, then they need to use an additive payment option.</li>
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>Status of your Order:</h5></i></p>
+                    <p><i><h5>How can I find out the status of my purchase order at any time?</h5></i></p>
+                    <p>
+                        The customer can see their order status and other information regarding their order status. They can also view their information in “my account” section.
+                    </p>
+                    <p>
+                        When you visit the “my account” section page, you can click on my orders link to see the status of your orders. To see the status of a particular order, click on “order no” button.
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>What is understood by different order status?</h5></i></p>
+                    <p>
+                        Pending authorization pending: your order has been entered into log and we are awaiting for authorization from the gateway of payment.
+                    </p>
+                    <p>
+                        Authorized/ under processing: we have received the authorization from the gateway of payment and we have marched off your order.
+                    </p>
+                    <p>
+                        Shipped: your order has been sent by vendors and is on its way.
+                    </p>
+                    <p>
+                        Cancelled: the order has been cancelled.  
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>Shipping process:</h5></i></p>
+                    <p><i><h5>What would be the delivery charges on mybooks?</h5></i></p>
+                    <p>
+                        It deviates from sellers to sellers. Sellers receive high shipping costs on items with low value. If this is the case, they charge minimal delivery charges helping sellers to cancel the supplying costs. Some of the sellers do not apply any delivery charges, if the customer orders a purchase of more than a minimal value.
+                    </p>
+                    <p>
+                        For example, mybooks seller, mostly charges €50 on order less €500 and for order above this predefined amount there are no charges implemented.
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>Sometimes sellers have few hidden charges like sales or duty taxes on their items, does mybooks also have any hidden costs?</h5></i></p>
+                    <p>
+                        Absolutely not. There are no hidden costs on the items available for purchase on mybooks. The prices displayed on the website are final prices. You are ought to pay the price you see on the product page. Also, delivery charges are displayed on the website, if charged, by any seller depending upon the amount of the order.
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>When can I expect my order to be delivered?</h5></i></p>
+                    <p>
+                        Vendors usually arrange the order and send the items ordered within the prespecified time given on the product page. But the working days exclude the national holidays and Sundays. The delivery time is also influenced by some factors like who is the vendor, the availability of the product and most importantly the place where the order has to be delivered as per how far is the place from the vendor’s location.
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>How come the delivery date of the product does not couple with the chronology given on the website’s product page?</h5></i></p>
+                    <p>
+                        The public holidays and Sundays are not to be counted as business days. The timeline mentioned on the product page says about the approximate timeline of business days. Hence, we tote up the days/dates excluding the holidays on the product page.
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>Courier service:</h5></i></p>
+                    <p><i><h5>What is the procedure of delivery?</h5></i></p>
+                    <p>
+                        Reputed and genial courier services have been employed by mybooks for the delivery process. When vendors will ship your product, you will be timely informed by the courier person about your shipment and you will be provided with a tracking number. With the help of tracking number, you can track and check the status of your order any time from courier service website and your mybooks account, respectively.
+                    </p>
+                    <p>
+                        At the time of ordering the product; to be precise at the checkout time, you will be asked to provide your area pin code number where you wish to deliver the product. This information will be recorded with us assuring the delivery of your purchase via seller.
+                    </p>
+                    <p>
+                        For the electronics product, we will provide insurance against theft or damage while transportation.
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>Does mybooks provide insurance to product while they are in transportation?</h5></i></p>
+                    <p>
+                        Only electronics items are insured against theft or damage while transportation.
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>If I wish to track my order, how can I do that?</h5></i></p>
+                    <p>
+                        We have hired reputed and genial courier services for the delivery process. You will be provided a tracking number or ID by the respective courier services. You can use this number or ID to get information about your package either from their website or their contact numbers provided on the respective courier service providers.
+                    </p>
+                    <hr class="singleline">
+                    <p><i><h5>Return and cancel policy:</h5></i></p>
+                    <p><i><h5>What is the policy provided for return?</h5></i></p>
+                    <p>
+                        We always insure that the product sold on the mybooks is new and 100% unfeigned. But still if there is any issue with the product delivered, we assure simple and costless return policies for the return of any damaged product. Possible solution for these issues could be replacing, exchanging or refunding of the product or amount value relying on seller’s return process.
+                    </p>
+                    <p>
+                        We ensure to make every possible effort in making it well-fixed for the customer’s convenience. Upside to this, mybooks has a policy to provide backup for the customer’s security. According to this policy buyer are provided with 45 days protection for return regardless to the policy of the seller, from the delivery date.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-1 order-lg-2 order-3"></div>
+        </div>
+    </div>
+</body>
+{%endblock%}

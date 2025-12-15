@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind&family=IBM+Plex+Sans:ital@1&family=Noto+Sans:wght@300;500&display=swap');
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Hind', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    
+    background: linear-gradient(to right, #0575E6, #00F260);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+}
+
+.navbar .dropdown-menu {
+    border-radius: 10px;
+}
+
+/* Search bar */
+.search {
+    width: 330px;
+    border: 2px solid #5689f1;
+    padding: 6px 10px;
+    border-radius: 25px;
+}
+
+.search input {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+/* Main background */
+.main {
+    background-color: #fefefe;
+}
+
+/* Footer */
+.footer, .footers {
+    background-color: #2c2c2c;
+    color: #bbb;
+    padding: 60px 0;
+    font-size: 14px;
+}
+
+.footer h4, .footers h5 {
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+.footer a, .footers a {
+    color: #bbb;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer a:hover, .footers a:hover {
+    color: #00F260;
+}
+
+.footer-col, .footers-one, .footers-two, .footers-three, .footers-four {
+    margin-bottom: 20px;
+}
+
+/* Cards */
+.card {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    margin: 15px auto;
+    text-align: center;
+    font-family: 'Hind', sans-serif;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card button {
+    border: none;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #00F260;
+    color: #fff;
+    border-radius: 0 0 10px 10px;
+    transition: background 0.3s ease;
+}
+
+.card button:hover {
+    background-color: #0575E6;
+}
+
+/* Carousel */
+.carousel-inner img {
+    border-radius: 10px;
+}
+
+/* Paginator */
+.pagination .page-item .page-link {
+    border-radius: 50%;
+    color: #0575E6;
+    margin: 0 3px;
+    border: 1px solid #ccc;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #0575E6;
+    color: #fff;
+    border: none;
+}
+
+/* Misc */
+.container {
+    max-width: 1170px;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,88 @@
+{%extends "index.html"%}
+
+{%block content%}
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+        text-shadow: rgba(0, 0, 0, .01) 0 0 1px
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        content: ">"
+    }
+
+    .breadcrumb {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        padding: .1rem 0rem !important;
+        margin-bottom: 0rem;
+        list-style: none;
+        background-color: #ffffff;
+        border-radius: .25rem
+    }
+
+    .product_name {
+        font-size: 20px;
+        font-weight: 400;
+        margin-top: 0px
+    }
+
+    .product_description {
+        padding-left: 0px
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    li {
+        font-size: 16px;
+    }
+</style>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1 order-lg-2 order-1"></div>
+            <div class="col-lg-10 order-2">
+                <div class="product_description">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active">contactUs</li>
+                        </ol>
+                    </nav><br>
+                    <h4><i><b>contact Us</b></i></h4><br>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Address :</td>
+                            <td>france</td>
+                        </tr>
+                        <tr>
+                            <td>Phone :</td>
+                            <td>+33 6 99 55 09 34/ +33 7 48 66 16 03   (Timings: 9:00 am to 6:00 pm)</td>
+                        </tr>
+                        <tr>
+                            <td>Email :</td>
+                            <td>koutaybasaada@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>Fax :</td>
+                            <td>,,,,,,,,,,</td>
+                        </tr>
+                    </table>
+                    note: you can contact us through the email and phone number provided above, and we will respond to you as soon as possible.
+                </div>
+            </div>
+            <div class="col-lg-1 order-lg-2 order-3"></div>
+        </div>
+    </div>
+    <br>
+</body>
+{%endblock%}

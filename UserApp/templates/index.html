@@ -1,0 +1,249 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ui-alibaba.css' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>mybooks.com - Buy your favorite books from just @99</title>
+    <style>
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: scale(1.03);
+        }
+        .product-card img {
+            height: 180px;
+            object-fit: cover;
+        }
+        .product-card .card-body {
+            padding: 8px;
+        }
+        .product-title {
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .product-price {
+            font-size: 13px;
+            color: #28a745;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'partials/navbar.html' %}
+
+    {% block content %}
+    {% include 'partials/carousel.html' %}
+
+    <!-- Category strip (short mega-menu placeholder) -->
+    <div class="container mt-3 category-strip d-none d-lg-block">
+        <div class="d-flex gap-3 align-items-center overflow-auto py-2">
+            {% for cat in cats %}
+            <a href="/ShowBooks/{{ cat.id }}" class="badge category-badge">{{ cat.Category_name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Section 1: All Books (only shown when ServiceData is provided) -->
+    {% if ServiceData %}
+    <div class="container mt-4">
+        <h4 class="mb-3">{{ t.all_books }}</h4>
+        <div class="row g-2">
+            {% for book in ServiceData %}
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                <div class="card product-card text-center small-card">
+                    <div class="position-relative">
+                      <span class="product-badge">Top</span>
+                      <a href="/ViewDetails/{{ book.id }}">
+                          <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.p_short_name }}">
+                      </a>
+                    </div>
+                    <div class="card-body p-2">
+                        <div class="product-title">{{ book.p_short_name }}</div>
+                        <div class="product-price">€ {{ book.price }}</div>
+                        <div class="d-flex justify-content-center mt-2">
+                            <button class="btn btn-sm btn-outline-primary me-1 btn-quickview" data-id="{{ book.id }}" data-name="{{ book.p_short_name|escapejs }}" data-price="{{ book.price }}" data-image="{{ book.image.url }}">{{ t.quick_view|default:'Quick View' }}</button>
+                            <form method="post" action="/addToCart" class="d-inline">
+                                {% csrf_token %}
+                                <input type="hidden" name="bookid" value="{{ book.id }}">
+                                <button class="btn btn-sm btn-primary">{{ t.add_to_cart|default:'Add to cart' }}</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Section 2: Books by Category -->
+    <div class="container mt-5">
+        {% for cat, books_in_cat in cat_books.items %}
+            {% if books_in_cat.exists %}
+            <h4 class="mb-3">{{ cat.Category_name }}</h4>
+            <div class="row g-3 mb-4">
+                {% for book in books_in_cat %}
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <div class="card product-card text-center">
+                        <a href="/ViewDetails/{{ book.id }}">
+                            <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.p_short_name }}">
+                        </a>
+                        <div class="card-body">
+                            <div class="product-title">{{ book.p_short_name }}</div>
+                            <div class="product-price">€ {{ book.price }}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+        <!-- Featured Sellers -->
+        <div class="container featured-row">
+            <h5>{{ t.featured_sellers }}</h5>
+                    <div class="row g-3 mt-2">
+                        <div class="col-6 col-sm-3">
+                            <div class="seller-card">
+                                <img src="{% static 'Navbar logo.png' %}" alt="seller">
+                                <div class="mt-2">Seller 1</div>
+                                <small class="text-muted">Top rated</small>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="seller-card">
+                                <img src="{% static 'Navbar logo.png' %}" alt="seller">
+                                <div class="mt-2">Seller 2</div>
+                                <small class="text-muted">Top rated</small>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="seller-card">
+                                <img src="{% static 'Navbar logo.png' %}" alt="seller">
+                                <div class="mt-2">Seller 3</div>
+                                <small class="text-muted">Top rated</small>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="seller-card">
+                                <img src="{% static 'Navbar logo.png' %}" alt="seller">
+                                <div class="mt-2">Seller 4</div>
+                                <small class="text-muted">Top rated</small>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+
+        <!-- Deals row -->
+        <div class="container featured-row">
+            <h5>{{ t.hot_deals }}</h5>
+            <div class="deals-scroll mt-2">
+                {% for book in ServiceData|slice:":8" %}
+                    <div class="deal-item">
+                        <img src="{{ book.image.url }}" style="height:120px; object-fit:cover; width:100%;"/>
+                        <div class="mt-2">
+                            <div class="small fw-bold">{{ book.p_short_name }}</div>
+                            <div class="text-success">€ {{ book.price }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% include 'partials/quickview_modal.html' %}
+
+    <!-- Paginator for All Books (only when ServiceData is present) -->
+    {% if ServiceData %}
+    <nav>
+        <ul class="pagination pagination-circle justify-content-center mt-4">
+            {% if ServiceData.has_previous %}
+            <li class="page-item"><a class="page-link" href="/?page=1">{{ t.first|default:'First' }}</a></li>
+            {% endif %}
+
+            {% for n in books %}
+            <li class="page-item {% if n == ServiceData.number %}active{% endif %}">
+                <a class="page-link" href="/?page={{ n }}">{{ n }}</a>
+            </li>
+            {% endfor %}
+
+            {% if ServiceData.has_next %}
+            <li class="page-item"><a class="page-link" href="/?page={{ lastpage }}">{{ t.last|default:'Last' }}</a></li>
+            {% endif %}
+                {{ t.popular }}
+    </nav>
+    {% endif %}
+
+    {% endblock %}
+
+    {% include 'partials/footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+        // Quick view modal population
+        document.addEventListener('DOMContentLoaded', function(){
+            const modal = document.getElementById('quickViewModal');
+            if(!modal) return;
+            document.body.addEventListener('click', function(e){
+                const btn = e.target.closest('.btn-quickview');
+                if(!btn) return;
+                                    const id = btn.getAttribute('data-id');
+                                    // fetch product json from server (AJAX)
+                                    fetch(`/product/${id}/json/`)
+                                        .then(r => r.json())
+                                                            .then(data => {
+                                                                if (data.error) { alert(data.error); return; }
+                                                                const img = document.getElementById('qv-image');
+                                                                const title = document.getElementById('qv-title');
+                                                                const pr = document.getElementById('qv-price');
+                                                                const desc = document.getElementById('qv-desc');
+                                                                const link = document.getElementById('qv-link');
+                                                                const qvBookId = document.getElementById('qv-bookid');
+                                                                if(img) img.src = (data.images && data.images.length) ? data.images[0] : '';
+                                                                if(title) title.textContent = data.name || '';
+                                                                if(pr) pr.textContent = data.price ? ('€ ' + data.price) : '';
+                                                                if(desc) desc.textContent = data.description || '';
+                                                                if(link) link.href = '/ViewDetails/' + data.id;
+                                                                if(qvBookId) qvBookId.value = data.id;
+
+                                                                // populate thumbnails
+                                                                const thumbs = document.getElementById('qv-thumbs');
+                                                                if(thumbs){
+                                                                    thumbs.innerHTML = '';
+                                                                    if(data.images && data.images.length){
+                                                                        data.images.forEach(function(src, idx){
+                                                                            const t = document.createElement('img');
+                                                                            t.src = src;
+                                                                            t.className = 'img-thumbnail';
+                                                                            t.style.width = '60px';
+                                                                            t.style.height = '60px';
+                                                                            t.style.objectFit = 'cover';
+                                                                            t.style.cursor = 'pointer';
+                                                                            t.addEventListener('click', function(){ if(img) img.src = src; });
+                                                                            thumbs.appendChild(t);
+                                                                        });
+                                                                    }
+                                                                }
+
+                                                                var bsModal = new bootstrap.Modal(modal);
+                                                                bsModal.show();
+                                                            })
+                                        .catch(err => { console.error(err); alert('Failed to load product details.'); });
+            });
+        });
+        </script>
+</body>
+</html>

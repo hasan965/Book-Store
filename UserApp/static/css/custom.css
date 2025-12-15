@@ -1,0 +1,135 @@
+/* === custom.css === */
+
+/* page base */
+:root{
+  --primary:#0d6efd;        /* bootstrap blue */
+  --muted:#6c757d;
+  --bg:#f8f9fa;
+  --card-bg:#ffffff;
+  --accent:#f7f9ff;
+  --radius:12px;
+}
+
+html,body{
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: #222;
+  line-height:1.5;
+}
+
+/* NAVBAR */
+.navbar {
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.navbar .navbar-brand img { height:42px; transition: transform .25s; }
+.navbar .navbar-brand img:hover { transform: scale(1.03); }
+.navbar .nav-link { color: #333; font-weight:500; }
+.navbar .nav-link.active { color: var(--primary); }
+
+/* SEARCH input smaller on mobile */
+@media (max-width:576px){
+  .navbar .form-control { width: 140px; }
+}
+
+/* CAROUSEL */
+.carousel-inner {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(16,24,40,0.06);
+}
+.carousel-item img {
+  height: 360px;
+  object-fit: cover;
+  width:100%;
+}
+
+/* CARDS / PRODUCTS */
+.card {
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(180deg, var(--card-bg) 0%, #fff 100%);
+  box-shadow: 0 8px 20px rgba(13,24,40,0.04);
+  transition: transform .28s, box-shadow .28s;
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(13,24,40,0.08); }
+.card-img-top {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  height: 260px;
+  object-fit: cover;
+}
+
+/* card body */
+.card-title { font-size: 1.05rem; font-weight:600; margin-bottom:0.25rem; color:#111; }
+.card-text { color: var(--muted); font-weight:600; }
+
+/* buttons */
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: none;
+  border-radius: 10px;
+  padding: 0.48rem 0.8rem;
+}
+.btn-primary:hover { filter:brightness(.95); }
+
+/* Cart badge */
+.position-absolute.badge {
+  transform: translate(25%, -25%);
+  font-size: .72rem;
+  padding: .35rem .45rem;
+}
+
+/* Add-to-cart button small variant */
+.btn-add {
+  background: linear-gradient(90deg, #ff7a59, #ff5c7a);
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(255,90,110,0.12);
+}
+.btn-add:disabled { opacity: 0.7; }
+
+/* Product tile improvements */
+.product-price { color: #1f7a5a; font-weight: 700; }
+.product-title { font-size: .95rem; font-weight: 700; }
+
+/* CATEGORIES grid */
+.container .card .card-body a { color: #0b5ed7; text-decoration: none; font-weight:600; }
+
+/* PAGINATION */
+.pagination .page-item .page-link {
+  border-radius: 8px;
+  margin: 0 4px;
+  min-width:40px;
+  text-align:center;
+}
+.pagination .page-item.active .page-link {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(13,24,40,0.06);
+}
+
+/* Footer */
+footer { background: #fff; border-top: 1px solid rgba(0,0,0,0.04); padding-top:28px; padding-bottom:28px; }
+footer small { color: #666; }
+
+/* utility tweaks */
+.text-muted { color: var(--muted) !important; }
+
+/* responsiveness: make cards taller on large screens */
+@media (min-width:1200px){
+  .card-img-top { height: 300px; }
+}
+
+/* Force important overrides if bootstrap rules are stronger */
+.container .card { background-clip: padding-box; }
+
+/* If you need to override inline or more specific rules, append !important
+   only where necessary, e.g.:
+   .card { border-radius:16px !important; }
+*/

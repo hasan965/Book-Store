@@ -1,0 +1,93 @@
+{%extends "index.html"%}
+
+{%block content%}
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+        text-shadow: rgba(0, 0, 0, .01) 0 0 1px
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        content: ">"
+    }
+
+    .breadcrumb {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        padding: .1rem 0rem !important;
+        margin-bottom: 0rem;
+        list-style: none;
+        background-color: #ffffff;
+        border-radius: .25rem
+    }
+
+    .product_name {
+        font-size: 20px;
+        font-weight: 400;
+        margin-top: 0px
+    }
+
+    .product_description {
+        padding-left: 0px
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    li {
+        font-size: 16px;
+    }
+</style>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1 order-lg-2 order-1"></div>
+            <div class="col-lg-10 order-2">
+                <div class="product_description">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active">Return</li>
+                        </ol>
+                    </nav><br>
+                    <h4><i><b>Returns</b></i></h4><br>
+                    <h5>If I receive a faulty/damaged packaged product from mybooks, what should I do in that case?</h5>
+                    <p>Non-indulgent quality check for packaging and shipping is compiled by the company
+                         for the customer satisfaction. Withal, if there is anything found improper with 
+                         the products provided by MyBooks, we will for sure resolve every issue.
+                    </p>
+                    <i><h6>Indian Customers:</h6></i>
+                    <p>
+                        If any product shipped to you is in faulty/damaged condition, you are asked by us 
+                        to e-mail the images of the faulty/damaged packet, as soon as you open the packet
+                         at “email id”. We will replace the faulty/damaged product by mailing us back 
+                         the default packet. As soon as we will receive the product. If by any chance the
+                          product is out of stock, we will at once refund the amount to the customer.
+                    </p>
+                    <hr class="singleline">
+                    <p><i>
+                            <h5>If I have to return the product ordered from bookswagon, how can I do that?</h5>
+                        </i></p>
+                        <i><h6>For Indian editions:</h6></i>
+                    <p>
+                        Anyways if the product(s) purchased is no more required by you, you can write 
+                        to us in that regard on “email-id” within 48 hours (2 days) of obtaining purchased 
+                        order. You can also return the shipment, if unopened, for a repayment or gift 
+                        voucher for the same amount. However, in such condition, we regret to inform 
+                        that we would not be able to compensate for the shipping charges spend by you.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-1 order-lg-2 order-3"></div>
+        </div>
+    </div>
+</body>
+{%endblock%}

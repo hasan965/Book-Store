@@ -1,0 +1,179 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
+{% load static %}
+
+<!-- تعديل CSS محلي لضبط الشعار وصور البائعين -->
+<style>
+  /* شعار أصغر مع حافة بيضاء وخفة ظل ليظهر كـ badge دائرية */
+  .nav-logo {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 50%;
+    background: #fff;           /* خلفية بيضاء حول الصورة */
+    padding: 4px;              /* فاصل بين الصورة والحافة */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    border: 2px solid rgba(255,255,255,0.9);
+    display: inline-block;
+  }
+
+  /* صور البائعين بحافة بيضاء وظل وتأثير تحويم */
+  .seller-img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 50%;
+    background: #fff;
+    padding: 3px;
+    border: 2px solid #fff;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .seller-img:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
+
+  .seller-list { gap: 0.5rem; display: flex; align-items: center; padding: 0; list-style: none; }
+  .seller-item { display: inline-block; }
+</style>
+
+<nav class="navbar navbar-expand-lg site-navbar fixed-top" style="z-index: 1030;">
+  <div class="container-fluid">
+    <!-- شعار الموقع (معدل ليصبح دائرياً) -->
+    <a class="navbar-brand" href="/">
+      <img src="{% static 'LOGO2.png' %}" class="nav-logo" alt="Logo">
+    </a>
+
+    <!-- زر التوسيع في الشاشات الصغيرة -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- روابط Navbar -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">{{ t.home }}</a>
+        </li>
+        <!-- Mega-menu Category -->
+        <li class="nav-item dropdown position-static">
+          <a class="nav-link dropdown-toggle" id="megaMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            {{ t.categories }}
+          </a>
+          <div class="dropdown-menu w-100 p-4 border-0 shadow-sm" aria-labelledby="megaMenuLink">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-3">
+                  <h6 class="text-white mb-2">{{ t.top_categories|default:'Top Categories' }}</h6>
+                  <ul class="list-unstyled">
+                    {% for cat in cats|slice:":8" %}
+                    <li><a class="dropdown-item py-1" href="/ShowBooks/{{ cat.id }}">{{ cat.Category_name }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="col-md-3">
+                  <h6 class="text-white mb-2">{{ t.more_categories|default:'More Categories' }}</h6>
+                  <ul class="list-unstyled">
+                    {% for cat in cats|slice:"8:16" %}
+                    <li><a class="dropdown-item py-1" href="/ShowBooks/{{ cat.id }}">{{ cat.Category_name }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="col-md-3 d-none d-md-block">
+                  <h6 class="text-white mb-2">{{ t.deals|default:'Deals' }}</h6>
+                  <div class="deal-card p-2 bg-white rounded">
+                    <small class="text-muted">Limited time</small>
+                    <p class="mb-0 fw-bold">Up to 50% off selected titles</p>
+                  </div>
+                </div>
+                <div class="col-md-3 d-none d-md-block">
+                  <h6 class="text-white mb-2">{{ t.sellers|default:'Sellers' }}</h6>
+                  <!-- استبدال القائمة بنماذج صور بائعة/بائعين دائرية -->
+                  <ul class="seller-list">
+                    <li class="seller-item"><a href="#"><img src="{% static 'seller1.png' %}" alt="Seller 1" class="seller-img"></a></li>
+                    <li class="seller-item"><a href="#"><img src="{% static 'seller2.png' %}" alt="Seller 2" class="seller-img"></a></li>
+                    <li class="seller-item"><a href="#"><img src="{% static 'seller3.png' %}" alt="Seller 3" class="seller-img"></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- About Us -->
+        <li class="nav-item">
+          <a class="nav-link" href="/aboutus">{{ t.about_us }}</a>
+        </li>
+      </ul>
+
+      <!-- (search moved to hero) -->
+      <!-- Language selector -->
+      <div class="btn-group me-2">
+        <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          {{ t.lang|default:'Lang' }}
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <form method="post" action="/i18n/setlang/" class="m-0">
+              {% csrf_token %}
+              <input type="hidden" name="language" value="en">
+              <input type="hidden" name="next" value="{{ request.get_full_path }}">
+              <button class="dropdown-item" type="submit">EN / English</button>
+            </form>
+          </li>
+          <li>
+            <form method="post" action="/i18n/setlang/" class="m-0">
+              {% csrf_token %}
+              <input type="hidden" name="language" value="ar">
+              <input type="hidden" name="next" value="{{ request.get_full_path }}">
+              <button class="dropdown-item" type="submit">AR / العربية</button>
+            </form>
+          </li>
+          <li>
+            <form method="post" action="/i18n/setlang/" class="m-0">
+              {% csrf_token %}
+              <input type="hidden" name="language" value="fr">
+              <input type="hidden" name="next" value="{{ request.get_full_path }}">
+              <button class="dropdown-item" type="submit">FR / Français</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+
+      <!-- أيقونة السلة -->
+<a href="{% if 'uname' in request.session %}/ShowAllCartItems{% else %}/signin{% endif %}"
+   class="btn position-relative me-3">
+  <i class="bi bi-cart" style="font-size: 1.4rem; "></i>
+  <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger {% if not cart_count or cart_count == 0 %}d-none{% endif %}">
+    {{ cart_count|default:0 }}
+  </span>
+</a>
+
+
+
+      <!-- زر Profile / Login -->
+      <div class="dropdown">
+        <a class="btn btn-outline-success dropdown-toggle" href="#" role="button" id="navbarDropdown"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="{% static 'login-removebg.png' %}" width="18px" alt="User Icon">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          {% if "uname" in request.session %}
+          <li><a class="dropdown-item" href="/userProfile"><span class="fa fa-user"></span> {{ t.profile|default:'Profile' }}</a></li>
+          <li><a class="dropdown-item" href="/ShowAllCartItems"><span class="fa fa-shopping-cart"></span> {{ t.view_details|default:'Cart' }}</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="/signout"><span class="fa fa-sign-out"></span> {{ t.sign_out|default:'Sign Out' }}</a></li>
+          {% else %}
+          <li><a class="dropdown-item" href="/signin"><span class="fa fa-sign-in"></span> {{ t.sign_in|default:'Sign in' }}</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<br>
+<br>
+<br>

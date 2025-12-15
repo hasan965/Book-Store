@@ -1,0 +1,113 @@
+/* ui-alibaba.css - prototype styles for Alibaba-like homepage */
+
+:root{
+  --primary: #ff8a00; /* warm orange accent */
+  --accent: #0f83d6; /* brand blue */
+  --muted: #6c757d;
+}
+
+/* Category strip badges */
+.category-strip { padding: 6px 0; }
+.category-badge {
+  background: #fff; border: 1px solid #e6e6e6; padding: 8px 14px; color: #333; border-radius: 8px; text-decoration: none;
+}
+.category-badge:hover { background: var(--accent); color: #fff; text-decoration: none; }
+
+/* Product card adjustments for denser grid */
+.small-card .card-img-top { height: 120px; object-fit: cover; }
+.product-card { border: none; }
+.product-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.product-price { color: #28a745; font-weight: 700; }
+
+/* Quick action buttons */
+.btn-sm { padding: 4px 8px; font-size: 12px; }
+
+/* Hero search styling fallback if not matched */
+.btn-search { padding: 0 18px; background: var(--primary); color: white; border: none; border-radius: 0 6px 6px 0; }
+
+/* Featured rows (placeholder) */
+.featured-row { margin-top: 22px; }
+.featured-card { border-radius: 8px; overflow: hidden; }
+.featured-card img { width: 100%; height: 140px; object-fit: cover; }
+
+/* tiny responsive tweaks */
+@media (max-width: 576px){
+  .product-title { font-size: 12px; }
+  .product-price { font-size: 12px; }
+}
+
+/* Navbar / header to match Alibaba-like palette */
+.site-navbar {
+  background: linear-gradient(90deg, var(--accent) 0%, #005f9e 100%);
+  color: #fff;
+  padding: 10px 0;
+}
+.site-navbar .navbar-brand img { filter: none; }
+.site-navbar .nav-link { color: rgba(255,255,255,0.95) !important; }
+.site-navbar .btn { color: #fff; }
+.site-navbar .btn-light { background: rgba(255,255,255,0.12); color: #fff; border: none; }
+.site-navbar .dropdown-menu { min-width: 150px; }
+.site-navbar .badge { background: rgba(255,255,255,0.12); color: #fff; }
+
+/* ensure search button looks good on navbar */
+.site-navbar .btn-outline-success { border-color: rgba(255,255,255,0.2); color: #fff; }
+.site-navbar .btn-outline-success:hover { background: rgba(255,255,255,0.06); }
+
+@media (max-width: 767px){
+  .site-navbar { padding: 8px 0; }
+}
+
+/* Mega menu styles */
+.site-navbar .dropdown-menu.w-100 {
+  background: linear-gradient(90deg, rgba(15,131,214,0.95), rgba(0,95,158,0.95));
+  color: #fff;
+  border-radius: 6px;
+}
+.site-navbar .dropdown-menu.w-100 .dropdown-item { color: rgba(255,255,255,0.95); }
+.site-navbar .dropdown-menu.w-100 .dropdown-item:hover { background: rgba(255,255,255,0.06); }
+/* keep default small dropdowns readable */
+.site-navbar .dropdown-menu { background: #fff; color: #333; }
+.site-navbar .dropdown-menu .dropdown-item { color: #333; }
+.site-navbar .dropdown-menu .dropdown-item:hover { background: rgba(0,0,0,0.04); }
+.deal-card { background: linear-gradient(90deg, #fff, #ffe6cc); }
+.site-navbar h6 { color: #fff; font-size: 14px; }
+
+/* show mega-menu on hover for large screens (improves desktop UX) */
+@media (min-width: 992px) {
+  .site-navbar .dropdown.position-static:hover > .dropdown-menu {
+    display: block;
+  }
+}
+
+/* Featured sellers / deals */
+.featured-row { margin-top: 22px; }
+.seller-card { background: #fff; border-radius: 8px; padding: 10px; text-align: center; box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+.seller-card img { width: 100%; height: 80px; object-fit: contain; }
+
+/* Product badges */
+.product-badge { position: absolute; top: 8px; left: 8px; background: var(--primary); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 11px; }
+.badge-seller { background: #f6f6f6; color: #333; padding: 3px 6px; border-radius: 4px; font-size: 11px; }
+
+/* Quick view modal */
+.quickview-img { width: 100%; height: 220px; object-fit: cover; }
+.quickview-title { font-size: 16px; font-weight: 700; }
+.quickview-price { color: #28a745; font-weight: 800; font-size: 18px; }
+
+/* Deals scroller */
+.deals-scroll { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; }
+.deal-item { min-width: 220px; background: #fff; border-radius: 8px; padding: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+
+/* Footer improvements */
+.footers { background: #f8f9fb; border-top: 1px solid rgba(0,0,0,0.04); }
+.footers .footers-logo img { max-width: 160px; }
+.footers h5 { font-weight: 700; color: #202425; }
+.footers .list-unstyled a { color: #58606a; }
+.footers .list-unstyled a:hover { color: var(--accent); text-decoration: none; }
+.disclaimer { background: transparent; }
+.copyright { background: #ffffff; }
+.copyright p { margin: 10px 0; color: #7a7f85; }
+
+/* Responsive footer columns spacing */
+@media (max-width: 767px){
+  .footers .footers-one, .footers .footers-two, .footers .footers-three, .footers .footers-four { margin-bottom: 18px; }
+}

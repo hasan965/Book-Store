@@ -1,0 +1,44 @@
+{%extends "index.html"%}
+
+
+{%block content%}
+
+<body>
+    <br>
+    <div class="container">
+    <h5><i>{{ t.view_details|default:"Search results:" }}</i></h5>
+    {% if allProd|length < 1 %}
+    <p>{{ t.no_search_results }}</p>
+    Your search query: <b>{{query}} </b> {{ t.search_suggestion }} <br>
+    Suggestions:
+    <ul><li>Try different keywords.</li></ul>
+    {%endif%}
+        
+        <div class="row g-2">
+            {% for book in allProd %}
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                <div class="card product-card text-center small-card position-relative">
+                    <span class="product-badge">Top</span>
+                    <a href="/ViewDetails/{{ book.id }}">
+                        <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.p_short_name }}">
+                    </a>
+                    <div class="card-body p-2">
+                        <div class="product-title">{{ book.p_short_name }}</div>
+                        <div class="product-price">€ {{ book.price }}</div>
+                        <div class="d-flex justify-content-center mt-2">
+                            <button class="btn btn-sm btn-outline-primary me-1 btn-quickview" data-id="{{ book.id }}" data-name="{{ book.p_short_name|escapejs }}" data-price="{{ book.price }}" data-image="{{ book.image.url }}">Quick View</button>
+                            <form method="post" action="/addToCart" class="d-inline">
+                                {% csrf_token %}
+                                <input type="hidden" name="bookid" value="{{ book.id }}">
+                                <button class="btn btn-sm btn-primary">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <br>
+</body>
+{%endblock%}
